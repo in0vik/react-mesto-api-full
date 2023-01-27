@@ -1,0 +1,26 @@
+.profile__add-person-button {
+  border: 2px solid #ffffff;
+  border-radius: 2px;
+  width: 150px;
+  height: 50px;
+  background-image: url(../../../images/plus-btn.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  justify-self: end;
+}
+
+@media screen and (max-width: 980px) {
+  .profile__add-person-button {
+    justify-self: auto;
+    width: calc(282px * 2 + 19px);
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .profile__add-person-button {
+    width: 282px;
+  }
+}
+
+
+

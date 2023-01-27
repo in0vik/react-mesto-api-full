@@ -1,0 +1,18 @@
+.header__burger-menu-button,
+.header__burger-menu-button::after,
+.header__burger-menu-button::before {
+  display: block;
+  position: absolute;
+  width: 24px;
+  height: 2px;
+  background-color: #fff;
+}
+
+.header__burger-menu-button::before {
+  content: '';
+  margin-top: 8px;
+}
+.header__burger-menu-button::after {
+  content: '';
+  margin-top: -8px;
+}

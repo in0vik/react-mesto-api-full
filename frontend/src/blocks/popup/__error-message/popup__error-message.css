@@ -1,0 +1,13 @@
+.popup__error-message {
+  display: -webkit-box;
+  opacity: 1;
+  color: #FF0000;
+  font-size: 12px;
+  line-height: 15px;
+  min-height: 30px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+
+}

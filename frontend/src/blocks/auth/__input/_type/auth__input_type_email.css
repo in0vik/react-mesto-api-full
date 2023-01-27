@@ -1,0 +1,9 @@
+.auth__input_type_email {
+  margin-top: 50px;
+}
+
+.auth__input_type_email::placeholder {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+}

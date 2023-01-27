@@ -1,0 +1,9 @@
+.logo_place_header {
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 980px) {
+  .logo_place_header {
+    padding: 0 0 0 27px;
+  }
+}

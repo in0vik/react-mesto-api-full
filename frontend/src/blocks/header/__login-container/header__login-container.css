@@ -1,0 +1,19 @@
+.header__login-container {
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+@media screen and (max-width: 980px) {
+  .header__login-container {
+    padding-right: 27px;
+  }
+}
+
+/* @media screen and (max-width: 590px) {
+  .header__login-container {
+    display: none;
+  }
+} */

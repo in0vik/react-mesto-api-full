@@ -1,0 +1,13 @@
+.content {
+  box-sizing: border-box;
+  display: grid;
+  row-gap: 50px;
+  padding: 40px 0 66px;
+  flex-shrink: 0;
+}
+
+@media screen and (max-width: 850px) {
+  .content {
+    padding: 42px 0 48px;
+  }
+}
