@@ -1,6 +1,8 @@
 const allowedCors = [
   'http://whereis.nomoredomainsclub.ru',
   'https://whereis.nomoredomainsclub.ru',
+  'http://api.whereis.nomoredomainsclub.ru',
+  'https://api.whereis.nomoredomainsclub.ru',
   'http://localhost:3000',
   'https://localhost:3000',
 ];
