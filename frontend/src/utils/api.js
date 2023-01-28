@@ -7,7 +7,7 @@ class Api {
   _handleResponse(res) {
     if (res.ok) {
       return res.json();
-    } 
+    }
     return Promise.reject(`Error: ${res.status}`);
   }
 
@@ -78,7 +78,7 @@ class Api {
   changeLikeCardStatus(cardId, isLiked) {
     return isLiked ? this.likeCard(cardId) : this.dislikeCard(cardId);
   }
-  
+
   updateAvatar(avatar) {
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
@@ -92,7 +92,7 @@ class Api {
 }
 
 const api = new Api({
-  baseUrl: "https://mesto.nomoreparties.co/v1/cohort-51",
+  baseUrl: "http://api.whereis.nomoredomainsclub.ru",
   headers: {
     authorization: "728a51fd-95af-420a-8e63-afea89fd240c",
     'Content-Type': 'application/json'

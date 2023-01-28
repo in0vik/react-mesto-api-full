@@ -1,6 +1,6 @@
-export const BASE_URL = "https://auth.nomoreparties.co";
+export const BASE_URL = "https://whereis.nomoredomainsclub.ru";
 
-const checkResponse = (res) => res.ok ? res.json() : Promise.reject(res); 
+const checkResponse = (res) => res.ok ? res.json() : Promise.reject(res);
 
 export const register = (email, password) => {
   return fetch(`${BASE_URL}/signup`, {
