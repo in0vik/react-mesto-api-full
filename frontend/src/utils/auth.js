@@ -1,4 +1,4 @@
-export const BASE_URL = "https://whereis.nomoredomainsclub.ru";
+export const BASE_URL = "https://auth.nomoreparties.co";
 
 const checkResponse = (res) => res.ok ? res.json() : Promise.reject(res);
 
