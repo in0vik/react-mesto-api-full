@@ -113,7 +113,7 @@ class Api {
 }
 
 const api = new Api({
-  baseUrl: "https://api.whereis.nomoredomainsclub.ru/",
+  baseUrl: "https://api.whereis.nomoredomainsclub.ru",
   // headers: {
   //   authorization: `Bearer ${localStorage.getItem('jwt')}`,
   //   'Content-Type': 'application/json'
