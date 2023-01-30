@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const helmet = require('helmet');
 const ms = require('ms');
@@ -25,10 +26,10 @@ const limiter = rateLimit({
 
 app.use(limiter);
 app.use(helmet());
+mongoose.connect(DB_ADDRESS);
 app.use(bodyParser.json());
 app.use(cookieParser());
 
-mongoose.connect(DB_ADDRESS);
 
 app.use(cors);
 app.use(requestLogger);

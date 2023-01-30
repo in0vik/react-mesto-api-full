@@ -6,6 +6,7 @@ const Users = require('../models/user');
 const BadRequestError = require('../errors/BadRequestError');
 const UnauthorizedError = require('../errors/UnauthorizedError');
 const ConflictError = require('../errors/ConflictError');
+const { JWT_SECRET } = require('../config/config');
 
 module.exports.getUsers = (req, res, next) => {
   Users.find({})
@@ -79,6 +80,7 @@ module.exports.getCurrentUser = (req, res, next) => {
 
 module.exports.updateUser = (req, res, next) => {
   const { name, about } = req.body;
+  console.log(req.body);
   Users.findByIdAndUpdate(
     req.user._id,
     { name, about },
@@ -125,6 +127,7 @@ module.exports.updateAvatar = (req, res, next) => {
 
 module.exports.login = (req, res, next) => {
   const { email, password } = req.body;
+  console.log(process.env.JWT_SECRET);
   Users.findOne({ email }).select('+password')
     .then((user) => {
       if (!user) {
@@ -136,7 +139,8 @@ module.exports.login = (req, res, next) => {
           if (!matched) {
             return next(new UnauthorizedError('Непрвильная почта или пароль'));
           }
-          const token = jwt.sign({ _id: user._id }, 'secret-key', { expiresIn: '7d' });
+          const token = jwt.sign({ _id: user._id }, JWT_SECRET, { expiresIn: '7d' });
+          console.log(JWT_SECRET);
           res.cookie('jwt', token, {
             maxAge: ms('7d'),
             httpOnly: true,

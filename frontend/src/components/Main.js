@@ -3,7 +3,7 @@ import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import Card from "./Card";
 
 function Main({ onEditProfile, onAddPlace, onEditAvatar, onCardClick, onCardLike, onCardDelete, cards }) {
- 
+
   const currentUser = useContext(CurrentUserContext);
 
   return (
@@ -22,14 +22,14 @@ function Main({ onEditProfile, onAddPlace, onEditAvatar, onCardClick, onCardLike
       </section>
       <section className="elements">
         {cards.map((card) => (
-            <Card 
-              key={card._id} 
-              cardData={card} 
-              onCardClick={onCardClick} 
-              onLike={onCardLike} 
+            <Card
+              key={card._id}
+              cardData={card}
+              onCardClick={onCardClick}
+              onLike={onCardLike}
               onDelete={onCardDelete} />
           )
-        )}
+        ).reverse()}
       </section>
     </main>
   )

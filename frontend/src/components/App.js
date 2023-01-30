@@ -34,26 +34,26 @@ function App() {
   const history = useHistory();
 
   useEffect(() => {
-    api
+    checkToken()
+  }, [])
+
+  useEffect(() => {
+    if (loggedIn) {
+      api
       .getInitialCards()
       .then((cards) => {
         setCards(cards);
       })
       .catch((err) => console.log(err));
-  }, []);
 
-  useEffect(() => {
-    api
+      api
       .getUserInfo()
       .then((userData) => {
         setCurrentUser(userData);
       })
       .catch((err) => console.log(err));
-  }, []);
-
-  useEffect(() => {
-    checkToken()
-  }, [])
+    }
+  }, [loggedIn]);
 
   function handleCardClick(card) {
     setImagePopupOpen(true);
@@ -97,11 +97,12 @@ function App() {
   }
 
   function handleCardLike(card) {
-    const isLiked = card.likes.some((item) => item._id === currentUser._id);
+    const isLiked = card.likes.some((item) => {
+      return item === currentUser._id});
     api
       .changeLikeCardStatus(card._id, !isLiked)
       .then((newCard) => {
-        setCards((state) => state.map((c) => (c._id === card._id ? newCard : c)));
+        setCards((cards) => cards.map((c) => (c._id === card._id ? newCard : c)));
       })
       .catch((err) => console.log(err));
   }
@@ -126,7 +127,7 @@ function App() {
     api
       .addNewCard(newCard)
       .then((newCard) => {
-        setCards([newCard, ...cards]);
+        setCards([...cards, newCard]);
         closeAllPopups();
       })
       .catch((err) => console.log(err))
@@ -194,7 +195,7 @@ function App() {
     if (jwt) {
       auth.getAuthData(jwt)
         .then((res) => {
-          setCurrentUserEmail(res.data.email);
+          setCurrentUserEmail(res.email);
           setLoggedIn(true);
           history.push("/");
         })
@@ -221,7 +222,7 @@ function App() {
             <AuthForm type='register' onSubmition={handleRegistrationSubmiit} isLoading={isLoading} />
           </Route>
           <Route path='/sign-up' />
-          <ProtectedRoute 
+          <ProtectedRoute
             loggedIn={loggedIn}
             component={Main}
             onEditProfile={handleEditProfileClick}
