@@ -1,4 +1,4 @@
-export const BASE_URL = "http://localhost:3000";
+export const BASE_URL = "https://api.whereis.nomoredomainsclub.ru/";
 
 const checkResponse = (res) => res.ok ? res.json() : Promise.reject(res);
 
@@ -36,7 +36,7 @@ export const getAuthData = (token) => {
   return fetch(`${BASE_URL}/users/me`, {
     method: 'GET',
     headers: {
-      "Accept": "application/json", 
+      "Accept": "application/json",
       "Content-Type": "application/json",
       "Authorization" : `Bearer ${token}`
     }
