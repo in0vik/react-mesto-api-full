@@ -8,12 +8,12 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const { errors: celebrateErrors } = require('celebrate');
 const { routes } = require('./routes');
-const STATUS_CODE = require('./errors/errorCodes');
 const NotFoundError = require('./errors/NotFoundError');
 const auth = require('./middlewares/auth');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const cors = require('./middlewares/cors');
 const { DB_ADDRESS, PORT } = require('./config/config');
+const errorHandler = require('./middlewares/errorHandler');
 
 const app = express();
 
@@ -23,16 +23,13 @@ const limiter = rateLimit({
   standardHeaders: true,
   legacyHeaders: false,
 });
-
+app.use(requestLogger);
 app.use(limiter);
 app.use(helmet());
 mongoose.connect(DB_ADDRESS);
 app.use(bodyParser.json());
 app.use(cookieParser());
-
-
 app.use(cors);
-app.use(requestLogger);
 app.get('/crash-test', () => {
   setTimeout(() => {
     throw new Error('Сервер сейчас упадет');
@@ -43,18 +40,8 @@ app.use(errorLogger);
 app.use('*', auth, (req, res, next) => {
   next(new NotFoundError('Страница не найдена'));
 });
-
 app.use(celebrateErrors());
-
-app.use((err, req, res, next) => {
-  if (err.statusCode) {
-    res.status(err.statusCode).send({ message: err.message });
-  } else {
-    res.status(STATUS_CODE.serverError).send({ message: 'Произошла ошибка на сервере' });
-  }
-  next();
-});
-
+app.use(errorHandler);
 app.listen(PORT, () => {
   console.log(`App is listening port: ${PORT}`);
 });
