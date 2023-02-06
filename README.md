@@ -2,6 +2,8 @@
 Repository for the `Mesto` project application, including frontend and backend parts of the application with the following features: authorization and user registration, card and user operations. 
 - Backend in the `backend/` directory and the frontend in `frontend/`. 
 
+[![img](https://i.postimg.cc/QxL21K8y/Screenshot-2023-02-06-at-18-51-50.png)](https://postimg.cc/bdTVjJ2x)
+
 ## 🚀 How to run locally
 
 1. Clone repo ``git clone https://github.com/in0vik/react-mesto-api-full.git``
