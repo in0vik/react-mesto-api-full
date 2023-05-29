@@ -8,7 +8,7 @@ function ConfirmDeleteCardPopup( { isOpen, onClose, onSubmit, selectedCard } ) {
   }
 
   return (
-    <PopupWithForm name="confirm" title="Вы уверены?" buttonTitle="Да" isOpen={isOpen} onClose={onClose} onSubmit={handleSubmit} isButtonDisable={false}/>
+    <PopupWithForm name="confirm" title="Are you sure?" buttonTitle="Yes" isOpen={isOpen} onClose={onClose} onSubmit={handleSubmit} isButtonDisable={false}/>
   )
 }
 

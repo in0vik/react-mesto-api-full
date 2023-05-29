@@ -30,7 +30,7 @@ class AuthForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    
+
     this.props.onSubmition({
       email: this.state.email.value,
       password: this.state.password.value,
@@ -46,8 +46,8 @@ class AuthForm extends React.Component {
       >
         <form className="auth__form" onSubmit={this.handleSubmit} noValidate>
           <h2 className="auth__title">
-            {(this.props.type === "login" && "Вход") ||
-              (this.props.type === "register" && "Регистрация")}
+            {(this.props.type === "login" && "Login") ||
+              (this.props.type === "register" && "Register")}
           </h2>
           <input
             value={this.state.email.value || ""}
@@ -70,7 +70,7 @@ class AuthForm extends React.Component {
             className="input auth__input auth__input_type_password"
             name="password"
             id="login-password"
-            placeholder="Пароль"
+            placeholder="Password"
             type="password"
             minLength="2"
             maxLength="320"
@@ -86,17 +86,17 @@ class AuthForm extends React.Component {
             type="submit"
             disabled={this.state.hasInvalidInput || this.props.isLoading}
           >
-            {(this.props.type === "login" 
-              && (this.props.isLoading ? "Вхожу..." : "Войти")) ||
-             (this.props.type === "register" 
-              && (this.props.isLoading ? "Регистрация..." : "Зарегестрироваться"))
+            {(this.props.type === "login"
+              && (this.props.isLoading ? "Loggin in..." : "Login")) ||
+             (this.props.type === "register"
+              && (this.props.isLoading ? "Registration..." : "Register"))
             }
           </button>
           {this.props.type === "register" && (
             <p className="register__login-proposal">
-              Уже зарегестрированы?{" "}
+              Already registered?{" "}
               <Link className="link button register__link" to="/sign-in">
-                Войти
+                Login
               </Link>
             </p>
           )}

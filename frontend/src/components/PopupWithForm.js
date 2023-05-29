@@ -9,7 +9,7 @@ function PopupWithForm({name, title, buttonTitle, children, isOpen, onClose, onS
           className={`button popup__submit-button popup__submit-button_type_${name} ${isButtonDisable && 'popup__submit-button_type_disable'}`}
           type="submit" disabled={isLoading || isButtonDisable}
         >
-          {isLoading ? 'Загрузка...' : buttonTitle}
+          {isLoading ? 'Loading...' : buttonTitle}
         </button>
       </form>
     </section>

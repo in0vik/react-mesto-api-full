@@ -25,14 +25,14 @@ function Header({ currentUserEmail, loggedIn, loggedOut }) {
       )}
       <header className="header">
         <a href="./" className="link header__link">
-          <img src={logoImage} alt="Логотип Mesto" className="logo logo_place_header" />
+          <img src={logoImage} alt="Mesto logo" className="logo logo_place_header" />
         </a>
         {loggedIn && isMobile && (
           <nav className="header__burger-menu-button-container" onClick={handleBurgerMenuClick}>
             <div className="header__burger-menu-button"></div>
           </nav>
         )}
-        {isDesktop && (
+        {(isDesktop || (isMobile && !loggedIn)) && (
           <nav className="header__login-container">
             <HeaderNavContent loggedIn={loggedIn} loggedOut={loggedOut} currentUserEmail={currentUserEmail}/>
           </nav>)

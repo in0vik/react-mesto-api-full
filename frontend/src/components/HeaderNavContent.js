@@ -8,18 +8,18 @@ function HeaderNavContent({ loggedIn, loggedOut, currentUserEmail }) {
         <Route path="/sign-in">
           {!loggedIn && (
             <Link to="/sign-up" className="link button header__login-btn">
-              Регистрация
+              Registration
             </Link>
           )}
         </Route>
         <Route path="/">
           {loggedIn ? (
             <Link to="/sign-in" onClick={loggedOut} className="link button header__login-btn">
-              Выйти
+              Logout
             </Link>
           ) : (
             <Link to="/sign-in" className="link button header__login-btn">
-              Войти
+              Login
             </Link>
           )}
         </Route>

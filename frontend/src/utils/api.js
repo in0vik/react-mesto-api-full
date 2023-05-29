@@ -1,3 +1,4 @@
+import { API_URL } from '../../config/config.js'
 class Api {
   constructor(options) {
     this._baseUrl = options.baseUrl;
@@ -113,8 +114,7 @@ class Api {
 }
 
 const api = new Api({
-  baseUrl: "https://api.whereis.nomoredomainsclub.ru",
-  // baseUrl: "http://localhost:3000",
+  baseUrl: API_URL,
 });
 
 export default api;

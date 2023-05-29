@@ -1,18 +1,18 @@
 export const tooltipContents = {
   success: {
     type: "success",
-    message: "Вы успешно зарегистрировались!",
+    message: "You have successfully registered!",
   },
   error: {
     type: "error",
-    message: `Что-то пошло не так! Попробуйте ещё раз.`,
+    message: `Something went wrong! Try again.`,
   },
   userNotfoundError: {
     type: "error",
-    message: `Пользователь с таким email не найден.`,
+    message: `No user with this email was found.`,
   },
   invalidDataError: {
     type: "error",
-    message: `Некорректные данные`,
+    message: `Incorrect data`,
   },
 };
