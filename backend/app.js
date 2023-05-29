@@ -26,19 +26,26 @@ const limiter = rateLimit({
 app.use(requestLogger);
 app.use(limiter);
 app.use(helmet());
-mongoose.connect(DB_ADDRESS);
+mongoose.set("strictQuery", false);
+try {
+  mongoose.connect(DB_ADDRESS);
+  console.log('Connected to MongoDB');
+} catch (error) {
+  throw new Error('Error connecting to MongoDB: ', error);
+}
+
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(cors);
 app.get('/crash-test', () => {
   setTimeout(() => {
-    throw new Error('Сервер сейчас упадет');
+    throw new Error('The server is about to crash');
   }, 0);
 });
 app.use(routes);
 app.use(errorLogger);
 app.use('*', auth, (req, res, next) => {
-  next(new NotFoundError('Страница не найдена'));
+  next(new NotFoundError('Page not found'));
 });
 app.use(celebrateErrors());
 app.use(errorHandler);

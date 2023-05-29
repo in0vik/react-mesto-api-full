@@ -5,22 +5,22 @@ const { regex } = require('../config/constants');
 const userSchema = new mongoose.Schema({
   name: {
     type: String,
-    default: 'Жак-Ив Кусто',
+    default: 'Yellowy',
     minlength: 2,
     maxlength: 30,
   },
   about: {
     type: String,
-    default: 'Исследователь',
+    default: 'Cheerful Sunshine Ambassador',
     minlength: 2,
     maxlength: 30,
   },
   avatar: {
     type: String,
-    default: 'https://pictures.s3.yandex.net/resources/jacques-cousteau_1604399756.png',
+    default: 'https://i.postimg.cc/8zRPqSWd/smile-icon.jpg',
     validate: {
       validator: (v) => regex.link.test(v),
-      message: 'Введена не корректная ссылка',
+      message: 'Incorrect link entered',
     },
   },
   email: {
@@ -28,7 +28,7 @@ const userSchema = new mongoose.Schema({
     required: true,
     validate: {
       validator: (v) => validator.isEmail(v),
-      message: 'Введен не корректный e-mail',
+      message: 'An invalid e-mail address was entered',
     },
     unique: true,
   },

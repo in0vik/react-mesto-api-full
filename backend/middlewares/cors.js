@@ -1,8 +1,6 @@
 const allowedCors = [
-  'http://whereis.nomoredomainsclub.ru',
-  'https://whereis.nomoredomainsclub.ru',
-  'http://api.whereis.nomoredomainsclub.ru',
-  'https://api.whereis.nomoredomainsclub.ru',
+  'http://mesto.fly.dev',
+  'https://mesto.fly.dev',
   'http://localhost:3000',
   'https://localhost:3000',
   'http://localhost:3001',

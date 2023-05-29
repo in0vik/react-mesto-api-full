@@ -13,7 +13,7 @@ const cardSchema = new mongoose.Schema({
     required: true,
     validate: {
       validator: (v) => validator.isURL(v),
-      message: 'Ошибка валидации ссылки на картинку',
+      message: 'Picture link validation error',
     },
   },
   owner: {

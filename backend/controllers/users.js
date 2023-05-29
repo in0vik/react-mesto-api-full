@@ -39,9 +39,9 @@ module.exports.createUser = (req, res, next) => {
     }))
     .catch((err) => {
       if (err.name === 'ValidationError') {
-        next(new BadRequestError('Переданы некорректные данные при создании пользователя.'));
+        next(new BadRequestError('Incorrect data were passed during user creation.'));
       } else if (err.code === 11000) {
-        next(new ConflictError('Такой пользователь уже есть'));
+        next(new ConflictError('Such a user already exists'));
       } else {
         next(err);
       }
@@ -51,12 +51,12 @@ module.exports.createUser = (req, res, next) => {
 module.exports.getUserById = (req, res, next) => {
   Users.findById(req.params.id)
     .orFail(() => {
-      next(new NotFoundError('Пользователь по указанному _id не найден'));
+      next(new NotFoundError('No user was found by the specified _id'));
     })
     .then((user) => res.send(user))
     .catch((err) => {
       if (err.name === 'CastError') {
-        next(new BadRequestError('Пользователь по указанному _id не найден'));
+        next(new BadRequestError('No user was found by the specified _id'));
       } else {
         next(err);
       }
@@ -66,12 +66,12 @@ module.exports.getUserById = (req, res, next) => {
 module.exports.getCurrentUser = (req, res, next) => {
   Users.findById(req.user._id)
     .orFail(() => {
-      next(new NotFoundError('Пользователь по указанному _id не найден'));
+      next(new NotFoundError('No user was found by the specified _id'));
     })
     .then((user) => res.send(user))
     .catch((err) => {
       if (err.name === 'CastError') {
-        next(new BadRequestError('Пользователь по указанному _id не найден'));
+        next(new BadRequestError('No user was found by the specified _id'));
       } else {
         next(err);
       }
@@ -90,12 +90,12 @@ module.exports.updateUser = (req, res, next) => {
     },
   )
     .orFail(() => {
-      throw new NotFoundError('Пользователь с указанным _id не найден.');
+      throw new NotFoundError('The user with the specified _id was not found.');
     })
     .then((user) => res.send(user))
     .catch((err) => {
       if (err.name === 'ValidationError') {
-        next(new BadRequestError('Переданы некорректные данные при обновлении пользователя.'));
+        next(new BadRequestError('Incorrect data was transmitted when updating the user.'));
       } else {
         next(err);
       }
@@ -113,12 +113,12 @@ module.exports.updateAvatar = (req, res, next) => {
     },
   )
     .orFail(() => {
-      next(new NotFoundError('Пользователь по указанному _id не найден'));
+      next(new NotFoundError('No user was found by the specified _id'));
     })
     .then((user) => res.send(user))
     .catch((err) => {
       if (err.name === 'ValidationError') {
-        next(new BadRequestError('Переданы некорректные данные при обновлении аватара.'));
+        next(new BadRequestError('Incorrect data was transmitted when the avatar was updated.'));
       } else {
         next(err);
       }
@@ -131,13 +131,13 @@ module.exports.login = (req, res, next) => {
   Users.findOne({ email }).select('+password')
     .then((user) => {
       if (!user) {
-        return next(new UnauthorizedError('Непрвильная почта или пароль'));
+        return next(new UnauthorizedError('Wrong email or password'));
       }
       return bcrypt.compare(password, user.password)
         // eslint-disable-next-line consistent-return
         .then((matched) => {
           if (!matched) {
-            return next(new UnauthorizedError('Непрвильная почта или пароль'));
+            return next(new UnauthorizedError('Wrong email or password'));
           }
           const token = jwt.sign({ _id: user._id }, JWT_SECRET, { expiresIn: '7d' });
           console.log(JWT_SECRET);
@@ -154,6 +154,6 @@ module.exports.login = (req, res, next) => {
 };
 
 module.exports.logOut = (req, res, next) => {
-  res.clearCookie('jwt').send({ message: 'Выход' })
+  res.clearCookie('jwt').send({ message: 'Exit' })
     .catch(next);
 };
