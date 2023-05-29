@@ -16,7 +16,7 @@
 
 Welcome to the Mesto project repository, where you can save and organize your favorite photo cards of places to travel! This repository consists of two main folders: ```/frontend``` and ```/backend```, each serving a crucial role in delivering a seamless user experience.
 
-[![brandbird-1.png](https://i.postimg.cc/hGkPmJDx/brandbird-1.png)](https://postimg.cc/p9BHbLnX)
+[![brandbird-5.png](https://i.postimg.cc/9FYpNTsm/brandbird-5.png)](https://postimg.cc/2V3h1qzM)
 
 ⚙️ **Functionality**
 
