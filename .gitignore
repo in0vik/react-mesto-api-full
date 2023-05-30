@@ -12,7 +12,8 @@
 /coverage
 
 # production
-/build
+/frontend/build
+
 
 # misc
 .env.local
