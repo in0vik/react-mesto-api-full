@@ -1,4 +1,4 @@
-import { API_URL } from '../../config/config.js'
+const { API_URL } = require("../config/config.js");
 class Api {
   constructor(options) {
     this._baseUrl = options.baseUrl;
@@ -15,20 +15,18 @@ class Api {
     return fetch(`${this._baseUrl}/cards`, {
       method: "GET",
       headers: {
-        authorization: `Bearer ${localStorage.getItem('token')}`
-      }
-    })
-    .then(this._handleResponse)
+        authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    }).then(this._handleResponse);
   }
 
   getUserInfo() {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "GET",
       headers: {
-        authorization: `Bearer ${localStorage.getItem('token')}`
-      }
-  })
-    .then(this._handleResponse)
+        authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    }).then(this._handleResponse);
   }
 
   updateUserInfo({ name, about }) {
@@ -36,62 +34,57 @@ class Api {
       method: "PATCH",
       body: JSON.stringify({
         name: name,
-        about: about
+        about: about,
       }),
       headers: {
-        'Content-Type': 'application/json',
-        authorization: `Bearer ${localStorage.getItem('token')}`
+        "Content-Type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("token")}`,
       },
-  })
-    .then(this._handleResponse)
+    }).then(this._handleResponse);
   }
 
-  addNewCard({name, link}) {
+  addNewCard({ name, link }) {
     return fetch(`${this._baseUrl}/cards`, {
       method: "POST",
       headers: {
-        'Content-Type': 'application/json',
-        authorization: `Bearer ${localStorage.getItem('token')}`
+        "Content-Type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("token")}`,
       },
       body: JSON.stringify({
         name: name,
-        link: link
-      })
-  })
-    .then(this._handleResponse)
+        link: link,
+      }),
+    }).then(this._handleResponse);
   }
 
   deleteCard(cardId) {
     return fetch(`${this._baseUrl}/cards/${cardId}`, {
       method: "DELETE",
       headers: {
-        'Content-Type': 'application/json',
-        authorization: `Bearer ${localStorage.getItem('token')}`
-      }
-  })
-    .then(this._handleResponse)
+        "Content-Type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    }).then(this._handleResponse);
   }
 
   likeCard(cardId) {
     return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
       method: "PUT",
       headers: {
-        'Content-Type': 'application/json',
-        authorization: `Bearer ${localStorage.getItem('token')}`
-      }
-  })
-    .then(this._handleResponse)
+        "Content-Type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    }).then(this._handleResponse);
   }
 
   dislikeCard(cardId) {
     return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
       method: "DELETE",
       headers: {
-        'Content-Type': 'application/json',
-        authorization: `Bearer ${localStorage.getItem('token')}`
-      }
-  })
-    .then(this._handleResponse)
+        "Content-Type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    }).then(this._handleResponse);
   }
 
   changeLikeCardStatus(cardId, isLiked) {
@@ -102,14 +95,13 @@ class Api {
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
       headers: {
-        'Content-Type': 'application/json',
-        authorization: `Bearer ${localStorage.getItem('token')}`
+        "Content-Type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("token")}`,
       },
       body: JSON.stringify({
-        avatar: avatar
-      })
-  })
-    .then(this._handleResponse)
+        avatar: avatar,
+      }),
+    }).then(this._handleResponse);
   }
 }
 
@@ -118,5 +110,3 @@ const api = new Api({
 });
 
 export default api;
-
-

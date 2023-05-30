@@ -1,45 +1,43 @@
-import { API_URL } from "../../config/config.js";
+const { API_URL } = require("../config/config.js");
 
-const checkResponse = (res) => res.ok ? res.json() : Promise.reject(res);
+const checkResponse = (res) => (res.ok ? res.json() : res.json().then((e) => Promise.reject(e)));
 
 export const register = (email, password) => {
   return fetch(`${API_URL}/signup`, {
-    method: 'POST',
+    method: "POST",
     headers: {
-      "Accept": "application/json",
-      "Content-Type": "application/json"
+      Accept: "application/json",
+      "Content-Type": "application/json",
     },
-    body: JSON.stringify({ email, password })
-  })
-  .then(checkResponse)
-}
+    body: JSON.stringify({ email, password }),
+  }).then(checkResponse);
+};
 
 export const login = (email, password) => {
   return fetch(`${API_URL}/signin`, {
-    method: 'POST',
+    method: "POST",
     headers: {
-      "Accept": "application/json",
-      "Content-Type": "application/json"
+      Accept: "application/json",
+      "Content-Type": "application/json",
     },
-    body: JSON.stringify({ password, email })
+    body: JSON.stringify({ password, email }),
   })
-  .then(checkResponse)
-  .then((data) => {
-    if (data.token) {
-      localStorage.setItem('token', data.token);
-      return data;
-    }
-  })
-}
+    .then(checkResponse)
+    .then((data) => {
+      if (data.token) {
+        localStorage.setItem("token", data.token);
+        return data;
+      }
+    })
+};
 
 export const getAuthData = (token) => {
   return fetch(`${API_URL}/users/me`, {
-    method: 'GET',
+    method: "GET",
     headers: {
-      "Accept": "application/json",
+      Accept: "application/json",
       "Content-Type": "application/json",
-      "Authorization" : `Bearer ${token}`
-    }
-  })
-  .then(checkResponse)
-}
+      Authorization: `Bearer ${token}`,
+    },
+  }).then(checkResponse);
+};
