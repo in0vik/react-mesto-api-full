@@ -60,9 +60,9 @@ Welcome to the Mesto project repository, where you can save and organize your fa
 
 🔗 **Deploy**
 
-The Mesto project is deployed using Docker and the powerful Fly.io platform.
+The Mesto project is deployed using Docker and the powerful Fly.io platform and later redeployed on Vercel.
 
-- Frontend: Access the deployed frontend application at [mesto.fly.dev](https://mesto.fly.dev).
-- Backend: Interact with the backend API at [mesto-api.fly.dev](https://mesto-api.fly.dev).
+- Frontend: Access the deployed frontend application at [mesto-react-alpha-one.vercel.app](https://mesto-react-alpha-one.vercel.app/).
+- Backend: Interact with the backend API at [mesto-react-alpha-one.vercel.app/api](https://mesto-react-alpha-one.vercel.app/api/).
 
 Enjoy exploring and sharing your travel memories with Mesto! 🌍✨
