@@ -3,7 +3,7 @@ import { useFormAndValidation } from "../hooks/useFormAndValidation";
 import PopupWithForm from "./PopupWithForm";
 
 function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar, isLoading }) {
-  const { values, errors, isValid, setIsValid, setValues, handleChange, resetForm } =
+  const { values, errors, isValid, handleChange, resetForm } =
     useFormAndValidation({});
   function handleSubmit(e) {
     e.preventDefault();

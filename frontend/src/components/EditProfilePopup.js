@@ -5,7 +5,7 @@ import { useFormAndValidation } from "../hooks/useFormAndValidation";
 
 function EditProfilePopup({ isOpen, onClose, onUpdateUser, isLoading }) {
   const currentUser = useContext(CurrentUserContext);
-  const { values, errors, isValid, setIsValid, setValues, handleChange, resetForm } =
+  const { values, errors, isValid, setValues, handleChange } =
     useFormAndValidation({});
 
   function handleSubmit(e) {

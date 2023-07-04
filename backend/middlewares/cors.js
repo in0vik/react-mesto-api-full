@@ -1,7 +1,7 @@
 const allowedCors = [
-  'http://mesto.fly.dev',
-  'https://mesto.fly.dev',
-  'http://localhost:3000',
+  'http://mesto-react-alpha-one.vercel.app',
+  'https://mesto-react-alpha-one.vercel.app',
+  'http://localhost:3000/',
   'https://localhost:3000',
   'http://localhost:3001',
   'https://localhost:3001',

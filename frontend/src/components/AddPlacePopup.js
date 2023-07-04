@@ -4,7 +4,7 @@ import { useEffect } from "react";
 
 function AddPlacePopup({ isOpen, onClose, onAddPlace, isLoading }) {
 
-  const { values, errors, isValid, setIsValid, setValues, handleChange, resetForm } = useFormAndValidation({})
+  const { values, errors, isValid, handleChange, resetForm } = useFormAndValidation({})
 
 
   function handleSubmit(e) {
