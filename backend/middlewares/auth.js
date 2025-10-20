@@ -14,10 +14,10 @@ const auth = (req, res, next) => {
   try {
     payload = jwt.verify(token, JWT_SECRET);
   } catch (err) {
-    next(new UnauthorizedError('Authorization error'));
+    return next(new UnauthorizedError('Authorization error'));
   }
   req.user = payload;
-  next();
+  return next();
 };
 
 module.exports = auth;

@@ -7,8 +7,17 @@ class AuthForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: {},
-      password: {},
+      email: {
+        value: '',
+        validationMessage: '',
+        isValid: false,
+      },
+      password: {
+        value: '',
+        validationMessage: '',
+        isValid: false,
+      },
+      hasInvalidInput: true,
     };
     this.handleOnChange = this.handleOnChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);

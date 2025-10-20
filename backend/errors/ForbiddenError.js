@@ -1,9 +1,9 @@
-class FrobiddenError extends Error {
+class ForbiddenError extends Error {
   constructor(message) {
     super(message);
-    this.name = 'frobidden';
+    this.name = 'Forbidden';
     this.statusCode = 403;
   }
 }
 
-module.exports = FrobiddenError;
+module.exports = ForbiddenError;

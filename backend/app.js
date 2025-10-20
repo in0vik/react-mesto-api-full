@@ -27,21 +27,14 @@ app.use(requestLogger);
 app.use(limiter);
 app.use(helmet());
 mongoose.set("strictQuery", false);
-try {
-  mongoose.connect(DB_ADDRESS);
-  console.log('Connected to MongoDB');
-} catch (error) {
-  throw new Error('Error connecting to MongoDB: ', error);
-}
+mongoose.connect(DB_ADDRESS)
+  .catch((error) => {
+    throw new Error('Error connecting to MongoDB: ' + error.message);
+  });
 
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(cors);
-app.get('/crash-test', () => {
-  setTimeout(() => {
-    throw new Error('The server is about to crash');
-  }, 0);
-});
 app.use(routes);
 app.use(errorLogger);
 app.use('*', auth, (req, res, next) => {
@@ -49,6 +42,4 @@ app.use('*', auth, (req, res, next) => {
 });
 app.use(celebrateErrors());
 app.use(errorHandler);
-app.listen(PORT, () => {
-  console.log(`App is listening port: ${PORT}`);
-});
+app.listen(PORT);

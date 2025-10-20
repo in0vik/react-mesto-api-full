@@ -1,5 +1,5 @@
 const BadRequestError = require('../errors/BadRequestError');
-const FrobiddenError = require('../errors/ForbiddenError');
+const ForbiddenError = require('../errors/ForbiddenError');
 const NotFoundError = require('../errors/NotFoundError');
 const Cards = require('../models/card');
 
@@ -28,19 +28,19 @@ module.exports.createCard = (req, res, next) => {
 
 module.exports.deleteCard = (req, res, next) => {
   const { cardId } = req.params;
-  Cards.findById({ _id: cardId })
+  Cards.findById(cardId)
     .orFail(() => {
       next(new NotFoundError('The card with the specified _id was not found'));
     })
     .then((card) => {
       if (req.user._id === card.owner.toString()) {
-        Cards.remove({ _id: cardId })
+        Cards.findByIdAndDelete(cardId)
           .then(() => {
             res.send(card);
           })
           .catch(next);
       } else {
-        next(new FrobiddenError('No rights to delete a card'));
+        next(new ForbiddenError('No rights to delete a card'));
       }
     })
     .catch((err) => {

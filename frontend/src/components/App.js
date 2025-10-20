@@ -144,7 +144,7 @@ function App() {
     setSelectedCard({});
   };
 
-  function handleRegistrationSubmiit({email, password}) {
+  function handleRegistrationSubmit({email, password}) {
     setLoading(true);
     auth.register(email, password)
     .then((res) => {
@@ -166,7 +166,7 @@ function App() {
     .finally(() => setLoading(false))
   }
 
-  function handleLoginSubmiit({ email, password }) {
+  function handleLoginSubmit({ email, password }) {
     setLoading(true);
     auth.login(email, password)
     .then((res) => {
@@ -216,10 +216,10 @@ function App() {
         <Header currentUserEmail={currentUserEmail} loggedIn={loggedIn} loggedOut={loggedOut} />
         <Switch>
           <Route path='/sign-in'>
-            <AuthForm type='login' onSubmition={handleLoginSubmiit} isLoading={isLoading} />
+            <AuthForm type='login' onSubmition={handleLoginSubmit} isLoading={isLoading} />
           </Route>
           <Route path='/sign-up'>
-            <AuthForm type='register' onSubmition={handleRegistrationSubmiit} isLoading={isLoading} />
+            <AuthForm type='register' onSubmition={handleRegistrationSubmit} isLoading={isLoading} />
           </Route>
           <Route path='/sign-up' />
           <ProtectedRoute
